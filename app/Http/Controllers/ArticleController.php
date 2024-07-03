@@ -49,4 +49,9 @@ class ArticleController extends Controller
         // return $articles;
         return view('articalfeed', compact('articles', 'articleTypes'));
     }
+    public function deleteArtical($id){
+        $articles = Article::find($id);
+        $articles->delete();
+        return redirect('/articalfeed')->with('success', 'Artical data deleted successfully!');
+    }
 }
