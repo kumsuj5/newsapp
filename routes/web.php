@@ -22,3 +22,4 @@ use App\Http\Controllers\ArticleController;
 Route::get('/artical', [ArticleController::class,'articl']);
 Route::post('/artical', [ArticleController::class,'articalfrom']);
 Route::get('/articalfeed', [ArticleController::class, 'articalfeed']);
+Route::delete('/articalfeed/{id}', [ArticleController::class, 'deleteArtical']);

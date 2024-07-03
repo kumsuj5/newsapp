@@ -27,6 +27,7 @@
         </div>
     @endif
         <h1>Create Article</h1>
+        <a href="/articalfeed" class="btn btn-secondary mt-3 mb-3">View Articles</a>
         <form action="/artical" act method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
