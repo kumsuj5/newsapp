@@ -56,8 +56,10 @@ class ArticleController extends Controller
     }
 
     public function articalShow($id){
-        $articles = Article::find($id);
-
+        $articles = Article::with('articletype')->find($id);
+        // return $articles;
+        // $articaltype = ArticleType::where('status',1)->get();
+        // return $articaltype;
         return view('articlecard' , compact('articles'));
         
     }
