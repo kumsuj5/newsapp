@@ -10,7 +10,7 @@
         body {
             padding-top: 50px;
             font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #8bdcf0;
         }
         .news-article {
             margin-bottom: 30px;
@@ -31,15 +31,15 @@
             border-top-right-radius: 10px;
         }
         .news-article .card-body {
-            padding: 1.25rem;
+            padding: 1.2rem;
         }
         .news-article .card-title {
             font-size: 1.25rem;
-            font-weight: bold;
+            /* font-weight: bold; */
         }
         .news-article .card-text {
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1;
         }
     </style>
     
@@ -57,9 +57,9 @@
                                 <img src="{{ asset('storage/' . $article->image) }}" class="card-img-top" alt="{{ $article->title }}">
                             @endif
                             <div class="card-body">
-                                <h5 class="card-title">{{ $article->title }}</h5>
-                                <p class="card-text">{{ $article->content }}</p>
                                 <p class="card-text"><small class="text-muted">{{ $article->articletype->typeartical ?? 'N/A' }}</small></p>
+                                <h6 class="card-title">{{ $article->title }}</h6>
+                                {{-- <p class="card-text">{{ $article->content }}</p> --}}
                                 <p class="card-text">Contact: {{ $article->contact_name }} - {{ $article->contact_email }}</p>
                            
                                     <form action="{{ url('/articalfeed', ['id' => $article->id]) }}" method="get"
