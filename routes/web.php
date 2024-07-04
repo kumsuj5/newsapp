@@ -20,6 +20,7 @@ use App\Http\Controllers\ArticleController;
 
 
 Route::get('/artical', [ArticleController::class,'articl']);
+Route::get('/artical-show/{id}', [ArticleController::class,'articalShow']);
 Route::post('/artical', [ArticleController::class,'articalfrom']);
 Route::get('/articalfeed', [ArticleController::class, 'articalfeed']);
-Route::delete('/articalfeed/{id}', [ArticleController::class, 'deleteArtical']);
+Route::get('/articalfeed/{id}', [ArticleController::class, 'deleteArtical']);

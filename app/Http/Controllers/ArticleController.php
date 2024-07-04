@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function articl(){
         $artical = Article::with('articletype')->get();
         $articaltype = ArticleType::where('status',1)->get();
-        // return $artical;    
+        // return $artical;     
         return view('artical', compact('artical','articaltype'));
         // return view('artical');
     }
@@ -21,7 +21,7 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file types and size as needed
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
             'contact_name' => 'nullable|string|max:255',
             'contact_email' => 'nullable|email|max:255',
         ]);
@@ -31,7 +31,7 @@ class ArticleController extends Controller
             $imagePath = null;
         }
 
-        $artical = new Article;
+        $artical = new Article();
         $artical->title= $request->title;
         $artical->content= $request->content;
         $artical->image= $imagePath;
@@ -53,5 +53,12 @@ class ArticleController extends Controller
         $articles = Article::find($id);
         $articles->delete();
         return redirect('/articalfeed')->with('success', 'Artical data deleted successfully!');
+    }
+
+    public function articalShow($id){
+        $articles = Article::find($id);
+
+        return view('articlecard' , compact('articles'));
+        
     }
 }

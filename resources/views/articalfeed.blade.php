@@ -51,25 +51,26 @@
         <div class="row">
             @foreach ($articles as $article)
                 <div class="col-md-4 news-article">
-                    <div class="card">
-                        @if ($article->image)
-                            <img src="{{ asset('storage/' . $article->image) }}" class="card-img-top" alt="{{ $article->title }}">
-                        @endif
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $article->title }}</h5>
-                            <p class="card-text">{{ $article->content }}</p>
-                            <p class="card-text"><small class="text-muted">{{ $article->articletype->typeartical ?? 'N/A' }}</small></p>
-                            <p class="card-text">Contact: {{ $article->contact_name }} - {{ $article->contact_email }}</p>
-                       
-                                <form action="{{ url('/articalfeed', ['id' => $article->id]) }}" method="POST"
-                                    onsubmit="return confirm('Are you sure you want to delete this Artical?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
-                       
+                    <a href="{{ url('/artical-show', $article->id) }}">
+                        <div class="card">
+                            @if ($article->image)
+                                <img src="{{ asset('storage/' . $article->image) }}" class="card-img-top" alt="{{ $article->title }}">
+                            @endif
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $article->title }}</h5>
+                                <p class="card-text">{{ $article->content }}</p>
+                                <p class="card-text"><small class="text-muted">{{ $article->articletype->typeartical ?? 'N/A' }}</small></p>
+                                <p class="card-text">Contact: {{ $article->contact_name }} - {{ $article->contact_email }}</p>
+                           
+                                    <form action="{{ url('/articalfeed', ['id' => $article->id]) }}" method="get"
+                                        onsubmit="return confirm('Are you sure you want to delete this Artical?');">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                           
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>
